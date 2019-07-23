@@ -5,7 +5,6 @@ import javax.annotation.Nullable;
 import com.moreprogression.main.block.custom.CustomMachineBlock;
 import com.moreprogression.main.tileentity.container.CrusherContainer;
 import com.moreprogression.main.tileentity.recipe.CrusherRecipe;
-import com.moreprogression.main.tileentity.recipe.RecipeTypes;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
@@ -111,7 +110,7 @@ public class CrusherTileEntity extends LockableTileEntity implements ISidedInven
 		if (!this.world.isRemote) {
 			ItemStack itemstack = this.crusherItemStacks.get(1);
 			if (this.isActive() || !itemstack.isEmpty() && !this.crusherItemStacks.get(0).isEmpty()) {
-				IRecipe<?> irecipe = this.world.getRecipeManager().getRecipe(RecipeTypes.CRUSHING, this, this.world)
+				IRecipe<?> irecipe = this.world.getRecipeManager().getRecipe(CrusherRecipe.CRUSHING, this, this.world)
 						.orElse(null);
 				if (!this.isActive() && this.canCrush(irecipe)) {
 					this.burnTime = this.getBurnTime(itemstack);
@@ -224,7 +223,7 @@ public class CrusherTileEntity extends LockableTileEntity implements ISidedInven
 	}
 
 	protected int func_214005_h() {
-		return this.world.getRecipeManager().getRecipe(RecipeTypes.CRUSHING, this, this.world)
+		return this.world.getRecipeManager().getRecipe(CrusherRecipe.CRUSHING, this, this.world)
 				.map(CrusherRecipe::getCrushTime).orElse(200);
 	}
 

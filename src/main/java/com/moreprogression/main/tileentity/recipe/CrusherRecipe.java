@@ -30,6 +30,8 @@ public class CrusherRecipe implements IRecipe<IInventory> {
 	private final float experience;
 	private final int crushTime;
 	
+	public static final IRecipeType<CrusherRecipe> CRUSHING = IRecipeType.register("moreprogression:crushing");
+	
 	public CrusherRecipe(ResourceLocation id, String group, Ingredient ingredient, ItemStack result, ItemStack secondResult, float experience, int crushTime) {
 		this.id = id;
 		this.group = group;
@@ -96,7 +98,7 @@ public class CrusherRecipe implements IRecipe<IInventory> {
 
 	@Override
 	public IRecipeType<?> getType() {
-		return RecipeTypes.CRUSHING;
+		return CRUSHING;
 	}
 	
 	public static class Serializer extends net.minecraftforge.registries.ForgeRegistryEntry<IRecipeSerializer<?>>  implements IRecipeSerializer<CrusherRecipe> {

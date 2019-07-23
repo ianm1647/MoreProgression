@@ -1,6 +1,6 @@
 package com.moreprogression.main.tileentity.container;
 
-import com.moreprogression.main.tileentity.recipe.RecipeTypes;
+import com.moreprogression.main.tileentity.recipe.CrusherRecipe;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -104,7 +104,7 @@ public class CrusherContainer extends Container {
 
 	protected boolean func_217057_a(ItemStack p_217057_1_) {
 		return this.world.getRecipeManager()
-				.getRecipe(RecipeTypes.CRUSHING, new Inventory(p_217057_1_), this.world)
+				.getRecipe(CrusherRecipe.CRUSHING, new Inventory(p_217057_1_), this.world)
 				.isPresent();
 	}
 
