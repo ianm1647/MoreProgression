@@ -1,5 +1,7 @@
 package com.moreprogression.main.block.custom;
 
+/* credit to enemeez */
+
 import java.util.Random;
 
 import com.moreprogression.main.item.ProgressionItems;
