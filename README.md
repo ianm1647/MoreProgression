@@ -1,2 +1,2 @@
 # MoreProgression
-# Adds lots of new progression to Minecraft!
+Adds lots of new progression to Minecraft!
