@@ -2,18 +2,18 @@ package com.moreprogression.main.tileentity.gui;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.moreprogression.main.MoreProgression;
-import com.moreprogression.main.tileentity.container.CrusherContainer;
+import com.moreprogression.main.tileentity.container.EnderInfuserContainer;
 
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public class CrusherScreen extends ContainerScreen<CrusherContainer> {
+public class EnderInfuserScreen extends ContainerScreen<EnderInfuserContainer> {
 	
-	private static final ResourceLocation TEXTURES = new ResourceLocation(MoreProgression.MODID, "textures/gui/container/base_furnace.png");
+	private static final ResourceLocation TEXTURES = new ResourceLocation(MoreProgression.MODID, "textures/gui/container/ender_infuser.png");
 
-	public CrusherScreen(CrusherContainer container, PlayerInventory playerInv, ITextComponent title) {
+	public EnderInfuserScreen(EnderInfuserContainer container, PlayerInventory playerInv, ITextComponent title) {
 		super(container, playerInv, title);
 	}
 	
@@ -39,12 +39,12 @@ public class CrusherScreen extends ContainerScreen<CrusherContainer> {
 		int i = this.guiLeft;
 		int j = this.guiTop;
 		this.blit(i, j, 0, 0, this.xSize, this.ySize);
-		if (((CrusherContainer) this.container).func_217061_l()) {
-			int k = ((CrusherContainer) this.container).func_217059_k();
+		if (((EnderInfuserContainer) this.container).func_217061_l()) {
+			int k = ((EnderInfuserContainer) this.container).func_217059_k();
 			this.blit(i + 56, j + 36 + 12 - k, 176, 12 - k, 14, k + 1);
 		}
 
-		int l = ((CrusherContainer) this.container).func_217060_j();
+		int l = ((EnderInfuserContainer) this.container).func_217060_j();
 		this.blit(i + 79, j + 34, 176, 14, l + 1, 16);
 	}
 

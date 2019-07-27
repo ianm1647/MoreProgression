@@ -9,7 +9,8 @@ public enum ProgressionToolMaterials implements IItemTier {
 	Ianite(7.0f, 10.0f, 1800, 4, 15, ProgressionItems.ianite_gem),
 	Tritanium(9.0f, 12.0f, 2500, 5, 15, ProgressionItems.tritanium_ingot),
 	Bone(4.5f, 5.5f, 350, 1, 30, ProgressionItems.bone_fragment),
-	Star(199.0f, 20.0f, 6500, 10, 200, null);
+	Star(199.0f, 20.0f, 6500, 10, 200, null),
+	Enderanium(12.0f, 15.0f, 3200, 6, 18, ProgressionItems.enderanium_ingot);
 	
 	private float attackDamage, efficiency;
 	private int durability, harvestLevel, enchantability;

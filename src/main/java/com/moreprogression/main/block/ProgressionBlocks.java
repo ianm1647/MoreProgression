@@ -14,6 +14,7 @@ public class ProgressionBlocks {
 	public static Block fossil_ore;
 	public static Block corrupted_ore;
 	public static Block dust;
+	public static Block enderanium_block;
 	
 	//Rocks
 	public static Block marble;
@@ -23,17 +24,27 @@ public class ProgressionBlocks {
 	public static Block basalt;
 	public static Block basalt_bricks;
 	
+	//Tile Entities
 	public static Block crusher;
+	public static Block reinforced_barrel;
+	public static Block ender_infuser;
 	
 	//Plants
 	public static Block blueberry_bush;
 	public static Block corn_crop;
 	public static Block cherry_sapling;
 	public static Block cherry_leaves;
+	public static Block silverwood_leaves;
+	public static Block silverwood_sapling;
+	public static Block redwood_sapling;
+	public static Block redwood_leaves;
 	public static Block corrupted_flower;
 	public static Block terracotta_grass;
+	public static Block field_grass;
+	public static Block corn_grass;
 	
 	//Wood
+		//Cherry
 	public static Block cherry_log;
 	public static Block cherry_planks;
 	public static Block cherry_slab;
@@ -44,6 +55,36 @@ public class ProgressionBlocks {
 	public static Block cherry_fencegate;
 	public static Block cherry_pressure_plate;
 	public static Block cherry_button;
+	public static Block cherry_wood;
+	public static Block stripped_cherry_log;
+	
+		//Silverwood
+	public static Block silverwood_log;
+	public static Block silverwood_planks;
+	public static Block silverwood_slab;
+	public static Block silverwood_stairs;
+	public static Block silverwood_door;
+	public static Block silverwood_trapdoor;
+	public static Block silverwood_fence;
+	public static Block silverwood_fencegate;
+	public static Block silverwood_pressure_plate;
+	public static Block silverwood_button;
+	public static Block silverwood_wood;
+	public static Block stripped_silverwood_log;
+	
+	//Redwood
+	public static Block redwood_log;
+	public static Block redwood_planks;
+	public static Block redwood_slab;
+	public static Block redwood_stairs;
+	public static Block redwood_door;
+	public static Block redwood_trapdoor;
+	public static Block redwood_fence;
+	public static Block redwood_fencegate;
+	public static Block redwood_pressure_plate;
+	public static Block redwood_button;
+	public static Block redwood_wood;
+	public static Block stripped_redwood_log;
 	
 	//Rock
 	public static Block marble_slab;

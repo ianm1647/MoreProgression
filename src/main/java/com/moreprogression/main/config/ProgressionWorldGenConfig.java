@@ -13,6 +13,14 @@ public class ProgressionWorldGenConfig
 	public static ForgeConfigSpec.BooleanValue enableLimestone;
 	public static ForgeConfigSpec.BooleanValue enableBasalt;
 	public static ForgeConfigSpec.BooleanValue enableBlueberryBush;
+	public static ForgeConfigSpec.BooleanValue enableSilverwoodTreeGen;
+	
+	public static ForgeConfigSpec.BooleanValue enableCherryForest;
+	public static ForgeConfigSpec.BooleanValue enableCorruptedForest;
+	public static ForgeConfigSpec.BooleanValue enableDustWasteland;
+	public static ForgeConfigSpec.BooleanValue enableTerracottaPlains;
+	public static ForgeConfigSpec.BooleanValue enableRedwoodForest;
+	public static ForgeConfigSpec.BooleanValue enableField;
 
 	public static void init(ForgeConfigSpec.Builder SERVER_BUILDER) {
 		SERVER_BUILDER.comment("IANITE ORE GENERATION");
@@ -38,5 +46,26 @@ public class ProgressionWorldGenConfig
 		
 		SERVER_BUILDER.comment("BLUEBERRY BUSH GENERATION");
 			enableBlueberryBush = SERVER_BUILDER.comment("Generate Blueberry Bushes in the world [true / false ]").define("blueberryBushGeneration", true);
+			
+		SERVER_BUILDER.comment("SILVERWOOD TREE GENERATION");
+			enableSilverwoodTreeGen = SERVER_BUILDER.comment("Generate Silverwood Trees in the world [true / false ]").define("silverwoodTreeGeneration", true);
+			
+		SERVER_BUILDER.comment("CHERRY FOREST GENERATION");
+			enableCherryForest = SERVER_BUILDER.comment("Generate Cherry Forests in the world [true / false ]").define("cherryForestGeneration", true);
+			
+		SERVER_BUILDER.comment("CORRUPTED FOREST GENERATION");
+			enableCorruptedForest = SERVER_BUILDER.comment("Generate Corrupted Forests in the world [true / false ]").define("corruptedForestGeneration", true);
+			
+		SERVER_BUILDER.comment("DUST WASTELAND GENERATION");
+			enableDustWasteland = SERVER_BUILDER.comment("Generate Dust Wastelands in the world [true / false ]").define("dustWastelandGeneration", true);
+			
+		SERVER_BUILDER.comment("TERRACOTTA PLAINS GENERATION");
+			enableTerracottaPlains = SERVER_BUILDER.comment("Generate Terracotta Plains in the world [true / false ]").define("terracottaPlainsGeneration", true);
+			
+		SERVER_BUILDER.comment("REDWOOD FOREST GENERATION");
+			enableRedwoodForest = SERVER_BUILDER.comment("Generate Redwood Forests in the world [true / false ]").define("redwoodForestGeneration", true);
+			
+		SERVER_BUILDER.comment("FIELD GENERATION");
+			enableField = SERVER_BUILDER.comment("Generate Fields in the world [true / false]").define("fieldGeneration", true);
 	}
 }

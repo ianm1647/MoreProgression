@@ -11,10 +11,11 @@ import net.minecraft.util.SoundEvent;
 
 public enum ProgressionArmorMaterials implements IArmorMaterial {
 	
-	Ianite("ianite", 1800, new int[] {5, 8, 10, 5}, 12, ProgressionItems.ianite_gem, "item.armor.equip_diamond", 4.0f),
-	Tritanium("tritanium", 2500, new int[] {7, 10, 12, 7}, 15, ProgressionItems.tritanium_ingot, "item.armor.equip_diamond", 6.0f),
-	Bone("bone", 500, new int[] {2, 4, 3, 2}, 30, ProgressionItems.bone_fragment, "item.armor.equip_iron", 0),
-	Dragon("dragon", 3000, new int[] {10, 13, 15, 10}, 20, ProgressionItems.dragon_scale, "item.armor.equip_leather", 9.0f);
+	Ianite("ianite", 135, new int[] {5, 8, 10, 5}, 12, ProgressionItems.ianite_gem, "item.armor.equip_diamond", 4.0f),
+	Tritanium("tritanium", 185, new int[] {7, 10, 12, 7}, 15, ProgressionItems.tritanium_ingot, "item.armor.equip_diamond", 6.0f),
+	Bone("bone", 40, new int[] {2, 4, 3, 2}, 30, ProgressionItems.bone_fragment, "item.armor.equip_iron", 0),
+	Dragon("dragon", 286, new int[] {12, 15, 17, 12}, 20, ProgressionItems.dragon_scale, "item.armor.equip_leather", 12.0f),
+	Enderanium("enderanium", 240, new int[] {10, 13, 15, 10}, 18, ProgressionItems.enderanium_ingot, "item.armor.equip_diamond", 9.0f);
 	
 	private static final int[] max_damage_array = new int[]{13, 15, 16, 11};
 	private String name, equipSound;

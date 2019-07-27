@@ -15,6 +15,8 @@ public class ProgressionTileEntities {
 
 	@ObjectHolder("crusher")
 	public static final TileEntityType<CrusherTileEntity> CRUSHER = null;
+	@ObjectHolder("ender_infuser")
+	public static final TileEntityType<EnderInfuserTileEntity> ENDER_INFUSER = null;
 
 	@Mod.EventBusSubscriber(modid = MoreProgression.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 	public static class Registration {
@@ -23,6 +25,7 @@ public class ProgressionTileEntities {
 			IForgeRegistry<TileEntityType<?>> registry = event.getRegistry();
 			
 			registry.register(TileEntityType.Builder.create(CrusherTileEntity::new, ProgressionBlocks.crusher).build(null).setRegistryName("crusher"));
+			registry.register(TileEntityType.Builder.create(EnderInfuserTileEntity::new, ProgressionBlocks.ender_infuser).build(null).setRegistryName("ender_infuser"));
 			
 			MoreProgression.LOGGER.info("Registered TileEntities");
 		}

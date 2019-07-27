@@ -3,7 +3,6 @@ package com.moreprogression.main.tileentity.container;
 import com.moreprogression.main.MoreProgression;
 
 import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -15,6 +14,8 @@ public class ProgressionContainerTypes {
 	
 	@ObjectHolder("crusher_gui")
 	public static final ContainerType<CrusherContainer> CRUSHER = null;
+	@ObjectHolder("infuser_gui")
+	public static final ContainerType<EnderInfuserContainer> ENDER_INFUSER = null;
 	
 	@Mod.EventBusSubscriber(modid = MoreProgression.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 	public static class Registration {
@@ -22,7 +23,8 @@ public class ProgressionContainerTypes {
 		public static void onContainerTypeRegister(final RegistryEvent.Register<ContainerType<?>> event) {
 			IForgeRegistry<ContainerType<?>> registry = event.getRegistry();
 			
-			registry.register(new ContainerType<CrusherContainer>(CrusherContainer::new).setRegistryName(new ResourceLocation(MoreProgression.MODID, "crusher_gui")));
+			registry.register(new ContainerType<CrusherContainer>(CrusherContainer::new).setRegistryName(MoreProgression.location("crusher_gui")));
+			registry.register(new ContainerType<EnderInfuserContainer>(EnderInfuserContainer::new).setRegistryName(MoreProgression.location("infuser_gui")));
 			
 			MoreProgression.LOGGER.info("Registred container types");
 		}

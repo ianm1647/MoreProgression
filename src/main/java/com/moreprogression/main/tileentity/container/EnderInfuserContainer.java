@@ -1,6 +1,6 @@
 package com.moreprogression.main.tileentity.container;
 
-import com.moreprogression.main.tileentity.recipe.CrushingRecipe;
+import com.moreprogression.main.tileentity.recipe.InfusingRecipe;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -16,18 +16,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class CrusherContainer extends Container {
+public class EnderInfuserContainer extends Container {
 	
 	private IInventory inventory;
 	private IIntArray fields;
 	private World world;
 
-	public CrusherContainer(int id, PlayerInventory playerInv) {
+	public EnderInfuserContainer(int id, PlayerInventory playerInv) {
 		this(id, playerInv, new Inventory(3), new IntArray(3));
 	}
 
-	public CrusherContainer(int id, PlayerInventory playerInventory, IInventory inventory, IIntArray fields) {
-		super(ProgressionContainerTypes.CRUSHER, id);
+	public EnderInfuserContainer(int id, PlayerInventory playerInventory, IInventory inventory, IIntArray fields) {
+		super(ProgressionContainerTypes.ENDER_INFUSER, id);
 		this.inventory = inventory;
 		this.fields = fields;
 		this.world = playerInventory.player.world;
@@ -104,7 +104,7 @@ public class CrusherContainer extends Container {
 
 	protected boolean func_217057_a(ItemStack p_217057_1_) {
 		return this.world.getRecipeManager()
-				.getRecipe(CrushingRecipe.CRUSHING, new Inventory(p_217057_1_), this.world)
+				.getRecipe(InfusingRecipe.INFUSING, new Inventory(p_217057_1_), this.world)
 				.isPresent();
 	}
 

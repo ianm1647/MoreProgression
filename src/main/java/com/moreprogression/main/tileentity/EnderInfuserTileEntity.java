@@ -3,8 +3,8 @@ package com.moreprogression.main.tileentity;
 import javax.annotation.Nullable;
 
 import com.moreprogression.main.block.custom.CustomMachineBlock;
-import com.moreprogression.main.tileentity.container.CrusherContainer;
-import com.moreprogression.main.tileentity.recipe.CrushingRecipe;
+import com.moreprogression.main.tileentity.container.EnderInfuserContainer;
+import com.moreprogression.main.tileentity.recipe.InfusingRecipe;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
@@ -27,27 +27,27 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public class CrusherTileEntity extends LockableTileEntity implements ISidedInventory, ITickableTileEntity {
+public class EnderInfuserTileEntity extends LockableTileEntity implements ISidedInventory, ITickableTileEntity {
 	
 	private static final int[] field_214015_g = new int[] { 0 };
 	private static final int[] field_214016_h = new int[] { 2, 1 };
 	private static final int[] field_214017_i = new int[] { 1 };
 
-	private NonNullList<ItemStack> crusherItemStacks = NonNullList.withSize(3, ItemStack.EMPTY);
+	private NonNullList<ItemStack> infuseItemStacks = NonNullList.withSize(3, ItemStack.EMPTY);
 
 	private int burnTime;
-	private int crushTime;
-	private int crushTimeTotal;
+	private int infuseTime;
+	private int infuseTimeTotal;
 
 	protected final IIntArray fields = new IIntArray() {
 		public int get(int p_221476_1_) {
 			switch (p_221476_1_) {
 			case 0:
-				return CrusherTileEntity.this.burnTime;
+				return EnderInfuserTileEntity.this.burnTime;
 			case 1:
-				return CrusherTileEntity.this.crushTime;
+				return EnderInfuserTileEntity.this.infuseTime;
 			case 2:
-				return CrusherTileEntity.this.crushTimeTotal;
+				return EnderInfuserTileEntity.this.infuseTimeTotal;
 			default:
 				return 0;
 			}
@@ -56,13 +56,13 @@ public class CrusherTileEntity extends LockableTileEntity implements ISidedInven
 		public void set(int p_221477_1_, int p_221477_2_) {
 			switch (p_221477_1_) {
 			case 0:
-				CrusherTileEntity.this.burnTime = p_221477_2_;
+				EnderInfuserTileEntity.this.burnTime = p_221477_2_;
 				break;
 			case 1:
-				CrusherTileEntity.this.crushTime = p_221477_2_;
+				EnderInfuserTileEntity.this.infuseTime = p_221477_2_;
 				break;
 			case 2:
-				CrusherTileEntity.this.crushTimeTotal = p_221477_2_;
+				EnderInfuserTileEntity.this.infuseTimeTotal = p_221477_2_;
 			}
 
 		}
@@ -72,26 +72,26 @@ public class CrusherTileEntity extends LockableTileEntity implements ISidedInven
 		}
 	};
 
-	public CrusherTileEntity() {
-		super(ProgressionTileEntities.CRUSHER);
+	public EnderInfuserTileEntity() {
+		super(ProgressionTileEntities.ENDER_INFUSER);
 	}
 	
 	public void read(CompoundNBT compound) {
 		super.read(compound);
-		this.crusherItemStacks = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
-		ItemStackHelper.loadAllItems(compound, this.crusherItemStacks);
+		this.infuseItemStacks = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
+		ItemStackHelper.loadAllItems(compound, this.infuseItemStacks);
 		this.burnTime = compound.getInt("BurnTime");
-		this.crushTime = compound.getInt("CrushTime");
-		this.crushTimeTotal = compound.getInt("CrushTimeTotal");
+		this.infuseTime = compound.getInt("InfuseTime");
+		this.infuseTimeTotal = compound.getInt("InfuseTimeTotal");
 
 	}
 
 	public CompoundNBT write(CompoundNBT compound) {
 		super.write(compound);
 		compound.putInt("BurnTime", this.burnTime);
-		compound.putInt("CrushTime", this.crushTime);
-		compound.putInt("CrushTimeTotal", this.crushTimeTotal);
-		ItemStackHelper.saveAllItems(compound, this.crusherItemStacks);
+		compound.putInt("InfuseTime", this.infuseTime);
+		compound.putInt("InfuseTimeTotal", this.infuseTimeTotal);
+		ItemStackHelper.saveAllItems(compound, this.infuseItemStacks);
 		return compound;
 	}
 	
@@ -108,38 +108,38 @@ public class CrusherTileEntity extends LockableTileEntity implements ISidedInven
 		}
 
 		if (!this.world.isRemote) {
-			ItemStack itemstack = this.crusherItemStacks.get(1);
-			if (this.isActive() || !itemstack.isEmpty() && !this.crusherItemStacks.get(0).isEmpty()) {
-				IRecipe<?> irecipe = this.world.getRecipeManager().getRecipe(CrushingRecipe.CRUSHING, this, this.world)
+			ItemStack itemstack = this.infuseItemStacks.get(1);
+			if (this.isActive() || !itemstack.isEmpty() && !this.infuseItemStacks.get(0).isEmpty()) {
+				IRecipe<?> irecipe = this.world.getRecipeManager().getRecipe(InfusingRecipe.INFUSING, this, this.world)
 						.orElse(null);
-				if (!this.isActive() && this.canCrush(irecipe)) {
+				if (!this.isActive() && this.canInfuse(irecipe)) {
 					this.burnTime = this.getBurnTime(itemstack);
 					if (this.isActive()) {
 						flag1 = true;
 						if (itemstack.hasContainerItem())
-							this.crusherItemStacks.set(1, itemstack.getContainerItem());
+							this.infuseItemStacks.set(1, itemstack.getContainerItem());
 						else if (!itemstack.isEmpty()) {
 							itemstack.shrink(1);
 							if (itemstack.isEmpty()) {
-								this.crusherItemStacks.set(1, itemstack.getContainerItem());
+								this.infuseItemStacks.set(1, itemstack.getContainerItem());
 							}
 						}
 					}
 				}
 
-				if (this.isActive() && this.canCrush(irecipe)) {
-					++this.crushTime;
-					if (this.crushTime == this.crushTimeTotal) {
-						this.crushTime = 0;
-						this.crushTimeTotal = this.func_214005_h();
-						this.crushItem(irecipe);
+				if (this.isActive() && this.canInfuse(irecipe)) {
+					++this.infuseTime;
+					if (this.infuseTime == this.infuseTimeTotal) {
+						this.infuseTime = 0;
+						this.infuseTimeTotal = this.func_214005_h();
+						this.infuseItem(irecipe);
 						flag1 = true;
 					}
 				} else {
-					this.crushTime = 0;
+					this.infuseTime = 0;
 				}
-			} else if (!this.isActive() && this.crushTime > 0) {
-				this.crushTime = MathHelper.clamp(this.crushTime - 2, 0, this.crushTimeTotal);
+			} else if (!this.isActive() && this.infuseTime > 0) {
+				this.infuseTime = MathHelper.clamp(this.infuseTime - 2, 0, this.infuseTimeTotal);
 			}
 
 			if (flag != this.isActive()) {
@@ -156,34 +156,22 @@ public class CrusherTileEntity extends LockableTileEntity implements ISidedInven
 
 	}
 
-	protected boolean canCrush(@Nullable IRecipe<?> p_214008_1_) {
-		if (!this.crusherItemStacks.get(0).isEmpty() && p_214008_1_ != null) {
+	protected boolean canInfuse(@Nullable IRecipe<?> p_214008_1_) {
+		if (!this.infuseItemStacks.get(0).isEmpty() && p_214008_1_ != null) {
 			ItemStack itemstack = p_214008_1_.getRecipeOutput();
 			if (itemstack.isEmpty()) {
 				return false;
 			} else {
-				ItemStack itemstack1 = this.crusherItemStacks.get(2);
+				ItemStack itemstack1 = this.infuseItemStacks.get(2);
 				if (itemstack1.isEmpty()) {
 					return true;
 				} else if (!itemstack1.isItemEqual(itemstack)) {
 					return false;
 				} else if (itemstack1.getCount() + itemstack.getCount() <= this.getInventoryStackLimit()
-						&& itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) { // Forge fix:
-																											// make
-																											// furnace
-																											// respect
-																											// stack
-																											// sizes in
-																											// furnace
-																											// recipes
+						&& itemstack1.getCount() + itemstack.getCount() <= itemstack1.getMaxStackSize()) { 
 					return true;
 				} else {
-					return itemstack1.getCount() + itemstack.getCount() <= itemstack.getMaxStackSize(); // Forge fix:
-																										// make furnace
-																										// respect stack
-																										// sizes in
-																										// furnace
-																										// recipes
+					return itemstack1.getCount() + itemstack.getCount() <= itemstack.getMaxStackSize(); 
 				}
 			}
 		} else {
@@ -191,22 +179,20 @@ public class CrusherTileEntity extends LockableTileEntity implements ISidedInven
 		}
 	}
 
-	private void crushItem(@Nullable IRecipe<?> p_214007_1_) {
-		if (p_214007_1_ != null && this.canCrush(p_214007_1_)) {
-			ItemStack itemstack = this.crusherItemStacks.get(0);
+	private void infuseItem(@Nullable IRecipe<?> p_214007_1_) {
+		if (p_214007_1_ != null && this.canInfuse(p_214007_1_)) {
+			ItemStack itemstack = this.infuseItemStacks.get(0);
 			ItemStack itemstack1 = p_214007_1_.getRecipeOutput();
-			ItemStack itemstack2 = this.crusherItemStacks.get(2);
+			ItemStack itemstack2 = this.infuseItemStacks.get(2);
 			if (itemstack2.isEmpty()) {
-				this.crusherItemStacks.set(2, itemstack1.copy());
+				this.infuseItemStacks.set(2, itemstack1.copy());
 			} else if (itemstack2.getItem() == itemstack1.getItem()) {
 				itemstack2.grow(itemstack1.getCount());
 			}
-
-			if (itemstack.getItem() == Blocks.WET_SPONGE.asItem() && !this.crusherItemStacks.get(1).isEmpty()
-					&& this.crusherItemStacks.get(1).getItem() == Items.BUCKET) {
-				this.crusherItemStacks.set(1, new ItemStack(Items.WATER_BUCKET));
+			if (itemstack.getItem() == Blocks.WET_SPONGE.asItem() && !this.infuseItemStacks.get(1).isEmpty()
+					&& this.infuseItemStacks.get(1).getItem() == Items.BUCKET) {
+				this.infuseItemStacks.set(1, new ItemStack(Items.WATER_BUCKET));
 			}
-
 			itemstack.shrink(1);
 		}
 	}
@@ -223,18 +209,18 @@ public class CrusherTileEntity extends LockableTileEntity implements ISidedInven
 	}
 
 	protected int func_214005_h() {
-		return this.world.getRecipeManager().getRecipe(CrushingRecipe.CRUSHING, this, this.world)
-				.map(CrushingRecipe::getCrushTime).orElse(200);
+		return this.world.getRecipeManager().getRecipe(InfusingRecipe.INFUSING, this, this.world)
+				.map(InfusingRecipe::getInfuseTime).orElse(200);
 	}
 
 	@Override
 	public int getSizeInventory() {
-		return this.crusherItemStacks.size();
+		return this.infuseItemStacks.size();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		for (ItemStack itemstack : this.crusherItemStacks) {
+		for (ItemStack itemstack : this.infuseItemStacks) {
 			if (!itemstack.isEmpty()) {
 				return false;
 			}
@@ -245,31 +231,31 @@ public class CrusherTileEntity extends LockableTileEntity implements ISidedInven
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		return this.crusherItemStacks.get(index);
+		return this.infuseItemStacks.get(index);
 	}
 
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
-		return ItemStackHelper.getAndSplit(this.crusherItemStacks, index, count);
+		return ItemStackHelper.getAndSplit(this.infuseItemStacks, index, count);
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
-		return ItemStackHelper.getAndRemove(this.crusherItemStacks, index);
+		return ItemStackHelper.getAndRemove(this.infuseItemStacks, index);
 	}
 
 	public void setInventorySlotContents(int index, ItemStack stack) {
-		ItemStack itemstack = this.crusherItemStacks.get(index);
+		ItemStack itemstack = this.infuseItemStacks.get(index);
 		boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack)
 				&& ItemStack.areItemStackTagsEqual(stack, itemstack);
-		this.crusherItemStacks.set(index, stack);
+		this.infuseItemStacks.set(index, stack);
 		if (stack.getCount() > this.getInventoryStackLimit()) {
 			stack.setCount(this.getInventoryStackLimit());
 		}
 
 		if (index == 0 && !flag) {
-			this.crushTimeTotal = this.func_214005_h();
-			this.crushTime = 0;
+			this.infuseTimeTotal = this.func_214005_h();
+			this.infuseTime = 0;
 			this.markDirty();
 		}
 
@@ -287,7 +273,7 @@ public class CrusherTileEntity extends LockableTileEntity implements ISidedInven
 
 	@Override
 	public void clear() {
-		this.crusherItemStacks.clear();
+		this.infuseItemStacks.clear();
 	}
 	
 	@Override
@@ -297,7 +283,7 @@ public class CrusherTileEntity extends LockableTileEntity implements ISidedInven
 		} else if (index != 1) {
 			return true;
 		} else {
-			ItemStack itemstack = this.crusherItemStacks.get(1);
+			ItemStack itemstack = this.infuseItemStacks.get(1);
 			return AbstractFurnaceTileEntity.isFuel(stack) || stack.getItem() == Items.BUCKET && itemstack.getItem() != Items.BUCKET;
 		}
 	}
@@ -330,12 +316,12 @@ public class CrusherTileEntity extends LockableTileEntity implements ISidedInven
 
 	@Override
 	protected ITextComponent getDefaultName() {
-		return new TranslationTextComponent("container.moreprogression.crusher");
+		return new TranslationTextComponent("container.moreprogression.ender_infuser");
 	}
 
 	@Override
 	protected Container createMenu(int i, PlayerInventory inventoryPlayer) {
-		return new CrusherContainer(i, inventoryPlayer, this, fields);
+		return new EnderInfuserContainer(i, inventoryPlayer, this, fields);
 	}
 	
 	net.minecraftforge.common.util.LazyOptional<? extends net.minecraftforge.items.IItemHandler>[] handlers = net.minecraftforge.items.wrapper.SidedInvWrapper

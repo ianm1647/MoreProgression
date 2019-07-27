@@ -17,6 +17,7 @@ public class ProgressionBiomes {
 	public static Biome cherry_forest;
 	public static Biome terracotta_plains;
 	public static Biome dust_wasteland;
+	public static Biome redwood_forest;
 	
 	public static BiomeMeta registerBiome(Biome biome, String name, int weight, boolean allowPlayerSpawning, BiomeManager.BiomeType spawnType, Type... types)
 	{

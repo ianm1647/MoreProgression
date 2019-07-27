@@ -1,6 +1,6 @@
 package com.moreprogression.main.block.custom;
 
-/* credit to enemeez */
+/* credit to enemeez1 */
 
 import java.util.Random;
 
@@ -76,9 +76,7 @@ public class CornCropBlock extends CropsBlock
 	   public boolean isMaxAge(BlockState state) {
 	      return state.get(this.getAgeProperty()) >= this.getMaxAge();
 	   }
-	   
-	   
-	   
+	      
 	   public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
 		{
 		 if (!worldIn.isRemote)
@@ -88,9 +86,9 @@ public class CornCropBlock extends CropsBlock
 				if(this.getAge(state)==5)
 				{
 					ItemStack stack = player.getHeldItem(handIn);
-					worldIn.setBlockState(pos, this.withAge(6), 3); //4
+					worldIn.setBlockState(pos, this.withAge(6), 3);
 	        		if (worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState())
-	        		worldIn.setBlockState(pos.up(), this.withAge(7), 3); //5
+	        		worldIn.setBlockState(pos.up(), this.withAge(7), 3);
 	        		stack.shrink(1);
 	        		return true;
 	        		
@@ -233,9 +231,6 @@ public class CornCropBlock extends CropsBlock
 	      return new ItemStack(this.getSeedsItem());
 	   }
 
-	   /**
-	    * Whether this IGrowable can grow
-	    */
 	   public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
 	      return !this.isMaxAge(state);
 	   }

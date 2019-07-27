@@ -14,11 +14,11 @@ import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ProgressionOreGeneration {
-    private static final CountRangeConfig IANITE = new CountRangeConfig(7, 5, 0, 15);
+    private static final CountRangeConfig IANITE = new CountRangeConfig(3, 5, 0, 13);
     private static final int IANITE_VEINSIZE = 5;
-    private static final CountRangeConfig TRITANIUM = new CountRangeConfig(18, 10, 0, 128);
+    private static final CountRangeConfig TRITANIUM = new CountRangeConfig(5, 10, 0, 128);
     private static final int TRITANIUM_VEINSIZE = 8;
-    private static final CountRangeConfig ENDER = new CountRangeConfig(18, 2, 0, 128);
+    private static final CountRangeConfig ENDER = new CountRangeConfig(8, 2, 0, 128);
     private static final EndOreFeature END_OREGEN = new EndOreFeature(null);
     private static final int ENDER_VEINSIZE = 9;
     private static final CountRangeConfig FOSSIL = new CountRangeConfig(10, 30, 0, 70);

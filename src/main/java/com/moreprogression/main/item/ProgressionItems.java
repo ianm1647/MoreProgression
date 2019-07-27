@@ -4,11 +4,13 @@ import net.minecraft.item.Item;
 
 public class ProgressionItems {
 	//Items
+	public static Item stone_pebble;
 	public static Item ianite_gem;
 	public static Item tritanium_ingot;
 	public static Item ender_ingot;
 	public static Item bone_fragment;
 	public static Item dragon_scale;
+	public static Item enderanium_ingot;
 	
 	//Dusts
 	public static Item coal_dust;
@@ -55,10 +57,15 @@ public class ProgressionItems {
 	public static Item fossil_ore;
 	public static Item corrupted_ore;
 	public static Item dust;
+	public static Item enderanium_block;
 	
+	//Tile Entities
 	public static Item crusher;
+	public static Item reinforced_barrel;
+	public static Item ender_infuser;
 	
 	//Wood
+		//Cherry
 	public static Item cherry_log;
 	public static Item cherry_planks;
 	public static Item cherry_slab;
@@ -69,6 +76,36 @@ public class ProgressionItems {
 	public static Item cherry_fencegate;
 	public static Item cherry_pressure_plate;
 	public static Item cherry_button;
+	public static Item cherry_wood;
+	public static Item stripped_cherry_log;
+	
+		//Silverwood
+	public static Item silverwood_log;
+	public static Item silverwood_planks;
+	public static Item silverwood_slab;
+	public static Item silverwood_stairs;
+	public static Item silverwood_door;
+	public static Item silverwood_trapdoor;
+	public static Item silverwood_fence;
+	public static Item silverwood_fencegate;
+	public static Item silverwood_pressure_plate;
+	public static Item silverwood_button;
+	public static Item silverwood_wood;
+	public static Item stripped_silverwood_log;
+	
+		//Redwood
+	public static Item redwood_log;
+	public static Item redwood_planks;
+	public static Item redwood_slab;
+	public static Item redwood_stairs;
+	public static Item redwood_door;
+	public static Item redwood_trapdoor;
+	public static Item redwood_fence;
+	public static Item redwood_fencegate;
+	public static Item redwood_pressure_plate;
+	public static Item redwood_button;
+	public static Item redwood_wood;
+	public static Item stripped_redwood_log;
 	
 	//Rock
 	public static Item marble_slab;
@@ -93,8 +130,14 @@ public class ProgressionItems {
 	//Plant Items
 	public static Item cherry_sapling;
 	public static Item cherry_leaves;
+	public static Item silverwood_leaves;
+	public static Item silverwood_sapling;
+	public static Item redwood_sapling;
+	public static Item redwood_leaves;
 	public static Item corrupted_flower;
 	public static Item terracotta_grass;
+	public static Item field_grass;
+	public static Item corn_grass;
 	
 	//Rock Blocks
 	public static Item marble;
@@ -105,13 +148,13 @@ public class ProgressionItems {
 	public static Item basalt_bricks;
 	
 	//Tools
+	public static Item stick_and_stone;
 		//Ianite
 	public static Item ianite_sword;
 	public static Item ianite_pickaxe;
 	public static Item ianite_axe;
 	public static Item ianite_shovel;
 	public static Item ianite_hoe;
-	
 		//Tritanium
 	public static Item tritanium_sword;
 	public static Item tritanium_pickaxe;
@@ -124,12 +167,18 @@ public class ProgressionItems {
 	public static Item bone_axe;
 	public static Item bone_shovel;
 	public static Item bone_hoe;
-	
+		//Star
 	public static Item star_sword;
 	public static Item star_pickaxe;
 	public static Item star_axe;
 	public static Item star_shovel;
 	public static Item star_hoe;
+		//Enderanium
+	public static Item enderanium_sword;
+	public static Item enderanium_pickaxe;
+	public static Item enderanium_axe;
+	public static Item enderanium_shovel;
+	public static Item enderanium_hoe;
 	
 	//Armor
 		//Ianite
@@ -152,5 +201,13 @@ public class ProgressionItems {
 	public static Item dragon_chestplate;
 	public static Item dragon_leggings;
 	public static Item dragon_boots;
+		//Enderanium
+	public static Item enderanium_helmet;
+	public static Item enderanium_chestplate;
+	public static Item enderanium_leggings;
+	public static Item enderanium_boots;
+	
+	//Spawn Egg
+	public static Item cherry_cow_egg;
 	
 }
