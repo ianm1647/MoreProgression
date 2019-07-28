@@ -1,7 +1,8 @@
 package com.moreprogression.main.init;
 
 import com.moreprogression.main.MoreProgression;
-import com.moreprogression.main.config.ProgressionWorldGenConfig;
+import com.moreprogression.main.config.BiomeConfig;
+import com.moreprogression.main.config.BlockConfig;
 import com.moreprogression.main.world.biome.CherryForestBiome;
 import com.moreprogression.main.world.biome.CorruptedForestBiome;
 import com.moreprogression.main.world.biome.DustWastelandBiome;
@@ -26,22 +27,22 @@ public class BiomeInit {
 			if(ProgressionBiomes.biomeRegistry == null)
 				ProgressionBiomes.biomeRegistry = event.getRegistry();
 
-		if (ProgressionWorldGenConfig.enableCherryForest.get()) {
+		if (BlockConfig.enableCherryWoodType.get()) {
 			ProgressionBiomes.registerBiome(new CherryForestBiome(), "Cherry Forest", 10, true, BiomeManager.BiomeType.WARM, Type.FOREST);
 		}
-		if (ProgressionWorldGenConfig.enableCorruptedForest.get()) {
+		if (BiomeConfig.enableCorruptedForest.get()) {
 			ProgressionBiomes.registerBiome(new CorruptedForestBiome(), "Corrupted Forest", 15, true, BiomeManager.BiomeType.COOL, Type.FOREST);
 		}
-		if (ProgressionWorldGenConfig.enableTerracottaPlains.get()) {
+		if (BiomeConfig.enableTerracottaPlains.get()) {
 			ProgressionBiomes.registerBiome(new TerracottaPlainsBiome(), "Terracotta Plains", 12, true, BiomeManager.BiomeType.WARM, Type.PLAINS);
 		}
-		if (ProgressionWorldGenConfig.enableDustWasteland.get()) {
+		if (BiomeConfig.enableDustWasteland.get()) {
 			ProgressionBiomes.registerBiome(new DustWastelandBiome(), "Dust Wasteland", 8, true, BiomeManager.BiomeType.DESERT, Type.DRY);
 		}
-		if (ProgressionWorldGenConfig.enableRedwoodForest.get()) {
+		if (BlockConfig.enableRedwoodWoodType.get()) {
 			ProgressionBiomes.registerBiome(new RedwoodForestBiome(), "Redwood Forest", 10, true, BiomeManager.BiomeType.WARM, Type.LUSH);
 		}
-		if (ProgressionWorldGenConfig.enableField.get()) {
+		if (BiomeConfig.enableField.get()) {
 			ProgressionBiomes.registerBiome(new FieldBiome(), "Field", 10, true, BiomeManager.BiomeType.WARM, Type.LUSH);
 		}
 			MoreProgression.LOGGER.debug("Biomes registered");

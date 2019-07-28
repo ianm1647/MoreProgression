@@ -3,7 +3,10 @@ package com.moreprogression.main;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.moreprogression.main.config.ProgressionConfig;
+import com.moreprogression.main.config.BiomeConfig;
+import com.moreprogression.main.config.BlockConfig;
+import com.moreprogression.main.config.ItemConfig;
+import com.moreprogression.main.config.WorldGenConfig;
 import com.moreprogression.main.item.group.ProgressionCreativeBlock;
 import com.moreprogression.main.item.group.ProgressionCreativeItem;
 import com.moreprogression.main.item.group.ProgressionCreativeTool;
@@ -39,9 +42,12 @@ public class MoreProgression {
 		
 		MinecraftForge.EVENT_BUS.register(this);
 		
-		ProgressionConfig.loadConfig(ProgressionConfig.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("progression.toml"));
+		BiomeConfig.loadConfig(BiomeConfig.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("moreprog-biomes.toml"));
+		WorldGenConfig.loadConfig(WorldGenConfig.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("moreprog-worldgen.toml"));
+		ItemConfig.loadConfig(ItemConfig.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("moreprog-items.toml"));
+		BlockConfig.loadConfig(BlockConfig.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("moreprog-block.toml"));
 	}
-	
+	 
 	private void setup(final FMLCommonSetupEvent event) {
 		Generation.genLoad();
 		LOGGER.info("Setup method registered");

@@ -45,6 +45,7 @@ public class ProgressionItems {
 	public static Item cooked_horse;
 	public static Item raw_calamari;
 	public static Item cooked_calamari;
+	public static Item cactus_berry;
 	
 	//Block Items
 	public static Item ianite_block;
@@ -76,8 +77,6 @@ public class ProgressionItems {
 	public static Item cherry_fencegate;
 	public static Item cherry_pressure_plate;
 	public static Item cherry_button;
-	public static Item cherry_wood;
-	public static Item stripped_cherry_log;
 	
 		//Silverwood
 	public static Item silverwood_log;
@@ -90,8 +89,6 @@ public class ProgressionItems {
 	public static Item silverwood_fencegate;
 	public static Item silverwood_pressure_plate;
 	public static Item silverwood_button;
-	public static Item silverwood_wood;
-	public static Item stripped_silverwood_log;
 	
 		//Redwood
 	public static Item redwood_log;
@@ -104,8 +101,6 @@ public class ProgressionItems {
 	public static Item redwood_fencegate;
 	public static Item redwood_pressure_plate;
 	public static Item redwood_button;
-	public static Item redwood_wood;
-	public static Item stripped_redwood_log;
 	
 	//Rock
 	public static Item marble_slab;
@@ -179,6 +174,18 @@ public class ProgressionItems {
 	public static Item enderanium_axe;
 	public static Item enderanium_shovel;
 	public static Item enderanium_hoe;
+	
+	//Paxels
+	public static Item wooden_paxel;
+	public static Item stone_paxel;
+	public static Item bone_paxel;
+	public static Item iron_paxel;
+	public static Item golden_paxel;
+	public static Item diamond_paxel;
+	public static Item ianite_paxel;
+	public static Item tritanium_paxel;
+	public static Item enderanium_paxel;
+	public static Item star_paxel;
 	
 	//Armor
 		//Ianite

@@ -42,6 +42,7 @@ public class ProgressionBlocks {
 	public static Block terracotta_grass;
 	public static Block field_grass;
 	public static Block corn_grass;
+	public static Block cactus_berry_bush;
 	
 	//Wood
 		//Cherry
@@ -55,8 +56,6 @@ public class ProgressionBlocks {
 	public static Block cherry_fencegate;
 	public static Block cherry_pressure_plate;
 	public static Block cherry_button;
-	public static Block cherry_wood;
-	public static Block stripped_cherry_log;
 	
 		//Silverwood
 	public static Block silverwood_log;
@@ -69,8 +68,6 @@ public class ProgressionBlocks {
 	public static Block silverwood_fencegate;
 	public static Block silverwood_pressure_plate;
 	public static Block silverwood_button;
-	public static Block silverwood_wood;
-	public static Block stripped_silverwood_log;
 	
 	//Redwood
 	public static Block redwood_log;
@@ -83,8 +80,6 @@ public class ProgressionBlocks {
 	public static Block redwood_fencegate;
 	public static Block redwood_pressure_plate;
 	public static Block redwood_button;
-	public static Block redwood_wood;
-	public static Block stripped_redwood_log;
 	
 	//Rock
 	public static Block marble_slab;

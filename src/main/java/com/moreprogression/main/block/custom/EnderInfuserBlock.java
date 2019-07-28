@@ -51,7 +51,7 @@ public class EnderInfuserBlock extends CustomMachineBlock {
 			double d1 = (double) pos.getY();
 			double d2 = (double) pos.getZ() + 0.5D;
 			if (rand.nextDouble() < 0.1D) {
-				worldIn.playSound(d0, d1, d2, SoundEvents.ENTITY_BLAZE_AMBIENT, SoundCategory.BLOCKS, 1.0F, 1.0F,
+				worldIn.playSound(d0, d1, d2, SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.BLOCKS, 1.0F, 1.0F,
 						false);
 			}
 
